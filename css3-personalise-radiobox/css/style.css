@@ -1,0 +1,81 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 10px;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  color: #0f273d;
+  font-family: 'Lato', sans-serif;
+}
+
+h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.swappy-radios {
+  width: 200px;
+  margin: 100px auto;
+}
+
+.swappy-radios label {
+  display: block;
+  position: relative;
+  padding-left: 4rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  color: #555;
+}
+.swappy-radios label:hover input ~ .radio {
+  opacity: 0.8;
+}
+.swappy-radios input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.swappy-radios input:checked ~ span {
+  color: #0bae72;
+  transition: color .5s;
+}
+.swappy-radios input:checked ~ .radio {
+  background-color: #0ac07d;
+  opacity: 1 !important;
+}
+.swappy-radios input:checked ~ .radio::after {
+  opacity: 1;
+}
+.swappy-radios .radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2.5rem;
+  width: 2.5rem;
+  background: #c9ded6;
+  border-radius: 50%;
+}
+.swappy-radios .radio::after {
+  display: block;
+  content: '';
+  position: absolute;
+  opacity: 0;
+  top: .5rem;
+  left: .5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #fff;
+}

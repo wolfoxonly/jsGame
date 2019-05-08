@@ -1,0 +1,1076 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 10px;
+  width: 100%;
+  height: 100%;
+  background: #181818;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+main {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  min-width: 320px;
+  min-height: 568px;
+}
+
+section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.preloader-overlay {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: #181818;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .25s ease-in-out;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+html.loading .preloader-overlay {
+  opacity: 1;
+}
+
+svg.preloader-icon {
+  width: 9vh;
+  height: 9vh;
+}
+html.loading svg.preloader-icon {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+svg.preloader-icon html.hide-preloader {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+@media (orientation: portrait) and (min-height: 800px) {
+  svg.preloader-icon {
+    width: 6vh;
+    height: 6vh;
+  }
+}
+@media (orientation: portrait) and (min-height: 800px) {
+  svg.preloader-icon {
+    width: 6vh;
+    height: 6vh;
+  }
+}
+@media (orientation: portrait) and (min-height: 1100px) {
+  svg.preloader-icon {
+    width: 5vh;
+    height: 5vh;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 500px) {
+  svg.preloader-icon {
+    width: 10vw;
+    height: 10vw;
+  }
+}
+@media (orientation: landscape) and (min-width: 600px) {
+  svg.preloader-icon {
+    width: 9vw;
+    height: 9vw;
+  }
+}
+@media (orientation: landscape) and (min-width: 800px) {
+  svg.preloader-icon {
+    width: 6vw;
+    height: 6vw;
+  }
+}
+@media (orientation: landscape) and (min-width: 1000px) {
+  svg.preloader-icon {
+    width: 5vw;
+    height: 5vw;
+  }
+}
+@media (orientation: landscape) and (min-width: 1600px) {
+  svg.preloader-icon {
+    width: 2.75vw;
+    height: 2.75vw;
+  }
+}
+
+.instructions {
+  position: absolute;
+  background: rgba(24, 24, 24, 0.75);
+  height: 100%;
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+  width: 100%;
+  z-index: 12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  -webkit-perspective: 500px;
+          perspective: 500px;
+  pointer-events: none;
+}
+.instructions.show {
+  opacity: 1;
+  transition: opacity .5s ease-in-out;
+}
+.instructions .move-mouse,
+.instructions .move-device {
+  text-align: center;
+  margin-bottom: 3%;
+}
+.instructions .move-mouse img,
+.instructions .move-device img {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
+.instructions .move-mouse span,
+.instructions .move-device span {
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+@media (min-width: 400px) {
+  .instructions .move-mouse span,
+  .instructions .move-device span {
+    font-size: 1.5rem;
+  }
+}
+.instructions .move-mouse img {
+  -webkit-transform: translateZ(20px);
+          transform: translateZ(20px);
+  -webkit-animation: mouseMoveIcon 2s infinite cubic-bezier(0.59, 0.24, 0.43, 0.75);
+          animation: mouseMoveIcon 2s infinite cubic-bezier(0.59, 0.24, 0.43, 0.75);
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  width: 6.5rem;
+  margin-bottom: 5%;
+}
+@media (orientation: landscape) and (min-width: 1400px) {
+  .instructions .move-mouse img {
+    width: 9rem;
+  }
+}
+
+@media (orientation: portrait) {
+  .instructions .move-mouse img {
+    width: 6.5rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 700px) {
+  .instructions .move-mouse img {
+    width: 8.5rem;
+  }
+}
+
+.instructions .move-device img {
+  -webkit-transform: translateZ(20px);
+          transform: translateZ(20px);
+  -webkit-animation: deviceMoveIcon 1.5s infinite ease-in-out;
+          animation: deviceMoveIcon 1.5s infinite ease-in-out;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  width: 3.5rem;
+  margin-bottom: 30%;
+}
+@media (orientation: landscape) and (min-width: 1300px) {
+  .instructions .move-device img {
+    width: 3.75rem;
+  }
+}
+
+@media (orientation: portrait) {
+  .instructions .move-device img {
+    width: 3.5rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 700px) {
+  .instructions .move-device img {
+    margin-bottom: 40%;
+    width: 4.15rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 1000px) {
+  .instructions .move-device img {
+    width: 4.5rem;
+  }
+}
+
+.instructions.show img {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+@-webkit-keyframes mouseMoveIcon {
+  20% {
+    -webkit-transform: translateZ(20px) translateX(0);
+            transform: translateZ(20px) translateX(0);
+  }
+  40% {
+    -webkit-transform: translateZ(20px) translateX(10%);
+            transform: translateZ(20px) translateX(10%);
+  }
+  67% {
+    -webkit-transform: translateZ(20px) translateX(-10%);
+            transform: translateZ(20px) translateX(-10%);
+  }
+  87% {
+    -webkit-transform: translateZ(20px) translateX(0);
+            transform: translateZ(20px) translateX(0);
+  }
+  100% {
+    -webkit-transform: translateZ(20px) translateX(0);
+            transform: translateZ(20px) translateX(0);
+  }
+}
+
+@keyframes mouseMoveIcon {
+  20% {
+    -webkit-transform: translateZ(20px) translateX(0);
+            transform: translateZ(20px) translateX(0);
+  }
+  40% {
+    -webkit-transform: translateZ(20px) translateX(10%);
+            transform: translateZ(20px) translateX(10%);
+  }
+  67% {
+    -webkit-transform: translateZ(20px) translateX(-10%);
+            transform: translateZ(20px) translateX(-10%);
+  }
+  87% {
+    -webkit-transform: translateZ(20px) translateX(0);
+            transform: translateZ(20px) translateX(0);
+  }
+  100% {
+    -webkit-transform: translateZ(20px) translateX(0);
+            transform: translateZ(20px) translateX(0);
+  }
+}
+@-webkit-keyframes deviceMoveIcon {
+  0% {
+    -webkit-transform: translateZ(20px) rotateY(-20deg);
+            transform: translateZ(20px) rotateY(-20deg);
+  }
+  50% {
+    -webkit-transform: translateZ(20px) rotateY(20deg);
+            transform: translateZ(20px) rotateY(20deg);
+  }
+  100% {
+    -webkit-transform: translateZ(20px) rotateY(-20deg);
+            transform: translateZ(20px) rotateY(-20deg);
+  }
+}
+@keyframes deviceMoveIcon {
+  0% {
+    -webkit-transform: translateZ(20px) rotateY(-20deg);
+            transform: translateZ(20px) rotateY(-20deg);
+  }
+  50% {
+    -webkit-transform: translateZ(20px) rotateY(20deg);
+            transform: translateZ(20px) rotateY(20deg);
+  }
+  100% {
+    -webkit-transform: translateZ(20px) rotateY(-20deg);
+            transform: translateZ(20px) rotateY(-20deg);
+  }
+}
+.container {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax-layers, .build-layers {
+  height: 100%;
+  position: absolute;
+  -webkit-transform: translate3d(0, 0, 0) scale(1.45, 1.45) translate(-1%, 2%);
+          transform: translate3d(0, 0, 0) scale(1.45, 1.45) translate(-1%, 2%);
+  width: 100%;
+  overflow: hidden;
+}
+@media (orientation: landscape) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1.6, 1.6) translate(-1%, 6%);
+            transform: translate3d(0, 0, 0) scale(1.6, 1.6) translate(-1%, 6%);
+  }
+}
+@media (orientation: landscape) and (min-height: 700px) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1.25, 1.25) translate(-1%, 6.75%);
+            transform: translate3d(0, 0, 0) scale(1.25, 1.25) translate(-1%, 6.75%);
+  }
+}
+@media (orientation: landscape) and (min-height: 800px) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1.15, 1.15) translate(-1%, 7%);
+            transform: translate3d(0, 0, 0) scale(1.15, 1.15) translate(-1%, 7%);
+  }
+}
+@media (orientation: landscape) and (min-height: 1080px) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1.05, 1.05) translate(-1%, 3.75%);
+            transform: translate3d(0, 0, 0) scale(1.05, 1.05) translate(-1%, 3.75%);
+  }
+}
+@media (orientation: landscape) and (min-height: 1200px) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1, 1) translate(-1%, 2%);
+            transform: translate3d(0, 0, 0) scale(1, 1) translate(-1%, 2%);
+  }
+}
+@media (orientation: landscape) and (min-height: 1300px) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1, 1) translate(-1%, 1%);
+            transform: translate3d(0, 0, 0) scale(1, 1) translate(-1%, 1%);
+  }
+}
+
+@media (orientation: portrait) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1.45, 1.45) translate(-1%, 2%);
+            transform: translate3d(0, 0, 0) scale(1.45, 1.45) translate(-1%, 2%);
+  }
+}
+@media (orientation: portrait) and (min-width: 500px) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1.2, 1.2) translate(-1%, 2%);
+            transform: translate3d(0, 0, 0) scale(1.2, 1.2) translate(-1%, 2%);
+  }
+}
+@media (orientation: portrait) and (min-width: 600px) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1.1, 1.1) translate(-1%, 2.25%);
+            transform: translate3d(0, 0, 0) scale(1.1, 1.1) translate(-1%, 2.25%);
+  }
+}
+@media (orientation: portrait) and (min-width: 800px) {
+  .parallax-layers, .build-layers {
+    -webkit-transform: translate3d(0, 0, 0) scale(1, 1) translate(-1%, 1.75%);
+            transform: translate3d(0, 0, 0) scale(1, 1) translate(-1%, 1.75%);
+  }
+}
+
+.parallax-layers div, .build-layers div {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.build-layers {
+  opacity: 1;
+  transition: opacity 1.75s ease-in-out;
+  transition-delay: 7s;
+}
+html.face-build .build-layers {
+  opacity: 0;
+}
+.build-layers [class*='build-0'] {
+  will-change: opacity;
+}
+
+.build-1 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/build-01-med.jpg") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 1.75s cubic-bezier(0.35, -0.02, 0.35, 1);
+  transition-delay: 0s;
+}
+@media (min-width: 940px) {
+  .build-1 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/build-01-large.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .build-1 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/build-01-small.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+html.face-build .build-1 {
+  opacity: 1;
+}
+
+.build-2 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/build-02-med.jpg") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 1.75s cubic-bezier(0.35, -0.02, 0.35, 1);
+  transition-delay: 1.1666666667s;
+}
+@media (min-width: 940px) {
+  .build-2 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/build-02-large.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .build-2 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/build-02-small.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+html.face-build .build-2 {
+  opacity: 1;
+}
+
+.build-3 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/build-03-med.jpg") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 1.75s cubic-bezier(0.35, -0.02, 0.35, 1);
+  transition-delay: 2.3333333333s;
+}
+@media (min-width: 940px) {
+  .build-3 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/build-03-large.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .build-3 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/build-03-small.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+html.face-build .build-3 {
+  opacity: 1;
+}
+
+.build-4 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/build-04-med.jpg") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 1.75s cubic-bezier(0.35, -0.02, 0.35, 1);
+  transition-delay: 3.5s;
+}
+@media (min-width: 940px) {
+  .build-4 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/build-04-large.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .build-4 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/build-04-small.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+html.face-build .build-4 {
+  opacity: 1;
+}
+
+.build-5 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/build-05-med.jpg") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 1.75s cubic-bezier(0.35, -0.02, 0.35, 1);
+  transition-delay: 4.6666666667s;
+}
+@media (min-width: 940px) {
+  .build-5 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/build-05-large.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .build-5 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/build-05-small.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+html.face-build .build-5 {
+  opacity: 1;
+}
+
+.build-6 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/build-06-med.jpg") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 1.75s cubic-bezier(0.35, -0.02, 0.35, 1);
+  transition-delay: 5.8333333333s;
+}
+@media (min-width: 940px) {
+  .build-6 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/build-06-large.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .build-6 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/build-06-small.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+html.face-build .build-6 {
+  opacity: 1;
+}
+
+.parallax-layers {
+  transition: opacity 1.75s cubic-bezier(0.35, -0.02, 0.35, 1);
+  transition-delay: 5.8333333333s;
+  opacity: 0;
+  z-index: 1;
+}
+html.face-build .parallax-layers {
+  opacity: 1;
+}
+
+.face-1 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/01-face-med.png") no-repeat center center;
+  background-size: contain;
+}
+@media (min-width: 940px) {
+  .face-1 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/01-face-large.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .face-1 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/01-face-small.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+
+.face-2 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/02-face-med.png") no-repeat center center;
+  background-size: contain;
+}
+@media (min-width: 940px) {
+  .face-2 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/02-face-large.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .face-2 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/02-face-small.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+
+.face-4 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/04-face-med.png") no-repeat center center;
+  background-size: contain;
+}
+@media (min-width: 940px) {
+  .face-4 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/04-face-large.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .face-4 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/04-face-small.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+
+.face-5 {
+  background: url("http://portraits.ryankbrown.com/self/img/med/05-face-med.png") no-repeat center center;
+  background-size: contain;
+}
+@media (min-width: 940px) {
+  .face-5 {
+    background: url("http://portraits.ryankbrown.com/self/img/large/05-face-large.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .face-5 {
+    background: url("http://portraits.ryankbrown.com/self/img/small/05-face-small.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+
+.face-3 {
+  overflow: hidden;
+}
+.face-3 div {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  background: url("http://portraits.ryankbrown.com/self/img/med/03-face-med.png") no-repeat center center;
+  background-size: contain;
+}
+@media (min-width: 940px) {
+  .face-3 div {
+    background: url("http://portraits.ryankbrown.com/self/img/large/03-face-large.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .face-3 div {
+    background: url("http://portraits.ryankbrown.com/self/img/small/03-face-small.png") no-repeat center center;
+    background-size: contain;
+  }
+}
+html.face-build .face-3 div {
+  -webkit-animation: eyeMoveLarge 8s infinite ease-in-out;
+          animation: eyeMoveLarge 8s infinite ease-in-out;
+  -webkit-animation-delay: 5.5s;
+          animation-delay: 5.5s;
+}
+@media (orientation: landscape) and (min-width: 400px) {
+  html.face-build .face-3 div {
+    -webkit-animation-name: eyeMoveSmall;
+            animation-name: eyeMoveSmall;
+  }
+}
+@media (orientation: landscape) and (min-width: 1100px) {
+  html.face-build .face-3 div {
+    -webkit-animation-name: eyeMoveLarge;
+            animation-name: eyeMoveLarge;
+  }
+}
+@media (orientation: landscape) and (max-height: 700px) {
+  html.face-build .face-3 div {
+    -webkit-animation-name: eyeMoveExtraSmall;
+            animation-name: eyeMoveExtraSmall;
+  }
+}
+
+@media (orientation: portrait) {
+  html.face-build .face-3 div {
+    -webkit-animation-name: eyeMoveLarge;
+            animation-name: eyeMoveLarge;
+  }
+}
+
+html.face-build .build-1, .build-1 {
+  opacity: 1;
+  -webkit-animation: none;
+          animation: none;
+}
+
+@-webkit-keyframes eyeMoveExtraSmall {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  80% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  90% {
+    -webkit-transform: translateX(0.3%);
+            transform: translateX(0.3%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes eyeMoveExtraSmall {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  80% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  90% {
+    -webkit-transform: translateX(0.3%);
+            transform: translateX(0.3%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@-webkit-keyframes eyeMoveSmall {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  80% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  90% {
+    -webkit-transform: translateX(0.7%);
+            transform: translateX(0.7%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@keyframes eyeMoveSmall {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  80% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  90% {
+    -webkit-transform: translateX(0.7%);
+            transform: translateX(0.7%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@-webkit-keyframes eyeMoveLarge {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  80% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  90% {
+    -webkit-transform: translateX(1%);
+            transform: translateX(1%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+@keyframes eyeMoveLarge {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  80% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  90% {
+    -webkit-transform: translateX(1%);
+            transform: translateX(1%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+.splatter {
+  height: 100%;
+  width: 100%;
+  background: url("http://portraits.ryankbrown.com/self/img/med/splatter-med.jpg") no-repeat center center;
+  background-size: contain;
+  opacity: 0;
+  transition: all 1.75s;
+  transition-delay: 7.85s;
+}
+@media (min-width: 940px) {
+  .splatter {
+    background: url("http://portraits.ryankbrown.com/self/img/large/splatter-large.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+@media (-webkit-max-device-pixel-ratio: 1) and (max-width: 500px), (max-resolution: 96dpi) and (max-width: 500px) {
+  .splatter {
+    background: url("http://portraits.ryankbrown.com/self/img/small/splatter-small.jpg") no-repeat center center;
+    background-size: contain;
+  }
+}
+html.face-build .splatter {
+  opacity: 1;
+}
+
+.description {
+  width: 100%;
+  line-height: 110%;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(24, 24, 24, 0), rgba(24, 24, 24, 0) 0%);
+  margin: 0 auto;
+  opacity: 0;
+  padding: 10vh 2rem;
+  padding-bottom: 6vh;
+  position: absolute;
+  bottom: 0;
+  z-index: 11;
+  transition: all 1s ease-out;
+  transition-delay: 7.75s;
+  -webkit-transform: translateY(10%);
+          transform: translateY(10%);
+  pointer-events: none;
+}
+@media (min-width: 400px) {
+  .description {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+@media (orientation: landscape) {
+  .description {
+    padding-top: 12vh;
+  }
+}
+@media (orientation: landscape) and (min-height: 700px) {
+  .description {
+    padding-bottom: 7vh;
+  }
+}
+@media (orientation: landscape) and (min-width: 1300px) {
+  .description {
+    padding-bottom: 9vh;
+  }
+}
+
+@media (orientation: portrait) and (min-height: 1000px) {
+  .description {
+    padding-bottom: 8.5vh;
+  }
+}
+
+html.face-build .description {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  background: linear-gradient(to bottom, rgba(24, 24, 24, 0), rgba(24, 24, 24, 0.9) 60%);
+}
+.description svg.signature {
+  height: 5rem;
+}
+@media (orientation: landscape) and (min-height: 400px) {
+  .description svg.signature {
+    margin-bottom: .5%;
+    -webkit-transform: translateX(5%) scale(1.1);
+            transform: translateX(5%) scale(1.1);
+  }
+}
+@media (orientation: landscape) and (min-height: 600px) {
+  .description svg.signature {
+    margin-bottom: 1.30%;
+    -webkit-transform: translateX(5%) scale(1.3);
+            transform: translateX(5%) scale(1.3);
+  }
+}
+@media (orientation: landscape) and (min-height: 1000px) {
+  .description svg.signature {
+    margin-bottom: 1.25%;
+    -webkit-transform: translateX(5%) scale(1.45);
+            transform: translateX(5%) scale(1.45);
+  }
+}
+@media (orientation: landscape) and (min-height: 1100px) {
+  .description svg.signature {
+    margin-bottom: 1.25%;
+    -webkit-transform: translateX(5%) scale(1.7);
+            transform: translateX(5%) scale(1.7);
+  }
+}
+
+@media (orientation: portrait) and (min-width: 300px) {
+  .description svg.signature {
+    margin-bottom: 3%;
+    -webkit-transform: translateX(5%) scale(1.1);
+            transform: translateX(5%) scale(1.1);
+  }
+}
+@media (orientation: portrait) and (min-width: 350px) {
+  .description svg.signature {
+    margin-bottom: 4%;
+    -webkit-transform: translateX(5%) scale(1.2);
+            transform: translateX(5%) scale(1.2);
+  }
+}
+@media (orientation: portrait) and (min-width: 400px) {
+  .description svg.signature {
+    -webkit-transform: translateX(5%) scale(1.3);
+            transform: translateX(5%) scale(1.3);
+  }
+}
+@media (orientation: portrait) and (min-width: 700px) {
+  .description svg.signature {
+    margin-bottom: 3.5%;
+    -webkit-transform: translateX(5%) scale(1.4);
+            transform: translateX(5%) scale(1.4);
+  }
+}
+@media (orientation: portrait) and (min-width: 1000px) {
+  .description svg.signature {
+    margin-bottom: 4.25%;
+    -webkit-transform: translateX(5%) scale(1.7);
+            transform: translateX(5%) scale(1.7);
+  }
+}
+
+.description svg.signature .sig-stroke {
+  stroke: #e6e6e6;
+  stroke: #a18a67;
+  fill: none;
+  stroke-width: 8.2509;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+.description svg.signature .line-1 {
+  stroke-dashoffset: -160;
+  stroke-dasharray: 160 10000;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 7.75s;
+}
+html.face-build .description svg.signature .line-1 {
+  stroke-dashoffset: 0;
+}
+.description svg.signature .line-2 {
+  stroke-dashoffset: -438;
+  stroke-dasharray: 438 10000;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 8s;
+}
+html.face-build .description svg.signature .line-2 {
+  stroke-dashoffset: 0;
+}
+.description svg.signature .line-3 {
+  stroke-dashoffset: -534;
+  stroke-dasharray: 534 10000;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 8.25s;
+}
+html.face-build .description svg.signature .line-3 {
+  stroke-dashoffset: 0;
+}
+.description svg.signature .line-4 {
+  stroke-dashoffset: -166;
+  stroke-dasharray: 166 10000;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 8.5s;
+}
+html.face-build .description svg.signature .line-4 {
+  stroke-dashoffset: 0;
+}
+.description svg.signature .line-5 {
+  stroke-dashoffset: -196;
+  stroke-dasharray: 196 10000;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 8.75s;
+}
+html.face-build .description svg.signature .line-5 {
+  stroke-dashoffset: 0;
+}
+.description svg.signature .line-6 {
+  stroke-dashoffset: -728;
+  stroke-dasharray: 728 10000;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 9s;
+}
+html.face-build .description svg.signature .line-6 {
+  stroke-dashoffset: 0;
+}
+.description svg.signature .line-7 {
+  stroke-dashoffset: -592;
+  stroke-dasharray: 592 10000;
+  transition: all 0.5s ease-in-out;
+  transition-delay: 9.25s;
+}
+html.face-build .description svg.signature .line-7 {
+  stroke-dashoffset: 0;
+}
+.description svg.signature .line-3 {
+  transition-duration: 1.375s;
+  transition-delay: 7.75s;
+}
+.description svg.signature .line-7 {
+  transition-duration: 1.375s;
+}
+.description svg.signature .line-4 {
+  transition-delay: 8.875s;
+}
+.description svg.signature .line-5 {
+  transition-delay: 9.125s;
+}
+.description svg.signature .line-6 {
+  transition-duration: 0.75s;
+  transition-delay: 9.375s;
+}
+.description svg.signature .line-7 {
+  transition-delay: 9.5s;
+}
+.description p {
+  transition: all 1s ease-out;
+  transition-delay: 10.75s;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+  opacity: 0;
+  color: gray;
+  font-size: 1.5rem;
+  line-height: 150%;
+}
+@media (orientation: landscape) and (min-height: 600px) {
+  .description p {
+    font-size: 1.6rem;
+  }
+}
+@media (orientation: landscape) and (min-height: 1000px) {
+  .description p {
+    font-size: 1.7rem;
+  }
+}
+@media (orientation: landscape) and (min-height: 1200px) {
+  .description p {
+    font-size: 1.8rem;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 350px) {
+  .description p {
+    font-size: 1.5rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 400px) {
+  .description p {
+    font-size: 1.6rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 550px) {
+  .description p {
+    font-size: 1.7rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 600px) {
+  .description p {
+    font-size: 1.8rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 650px) {
+  .description p {
+    font-size: 1.7rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 800px) {
+  .description p {
+    font-size: 1.6rem;
+  }
+}
+@media (orientation: portrait) and (min-width: 1000px) {
+  .description p {
+    font-size: 1.8rem;
+  }
+}
+
+html.face-build .description p {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}

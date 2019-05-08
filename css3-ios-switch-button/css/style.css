@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', sans-serif;
+  background: linear-gradient(28deg, #c5eff7, #fff);
+}
+form {
+  display: grid;
+  background: #fafafa;
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem 0;
+  min-width: 160px;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  margin: 0;
+  padding: 2rem 1rem;
+  -webkit-filter: drop-shadow(20px 20px 20px #aaa);
+          filter: drop-shadow(20px 20px 20px #aaa);
+  position: relative;
+}
+h1 {
+  grid-column: 1/-1;
+  margin: 0;
+  font-size: 1.25rem;
+  color: #fff;
+  background: #89c4f4;
+  position: absolute;
+  width: 248px;
+  padding: 1rem;
+  z-index: 3;
+  top: 0;
+  left: -1rem;
+  text-align: center;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: rotate(-90deg) translate(-100%, -100%);
+          transform: rotate(-90deg) translate(-100%, -100%);
+}
+label {
+  cursor: pointer;
+}
+.check {
+  display: inline-block;
+  height: 40px;
+  width: 80px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.check__check {
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+}
+.check__check:checked ~ .check__indicator {
+  background: #7befb2;
+}
+.check__check:checked ~ .check__indicator:after {
+  -webkit-transform: translate(40px, 0);
+          transform: translate(40px, 0);
+}
+.check__check,
+.check__indicator {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+}
+.check__indicator {
+  background: #ececec;
+  transition: background 0.25s ease;
+}
+.check__indicator:after {
+  height: 30px;
+  width: 30px;
+  background: #fff;
+  content: '';
+  position: absolute;
+  border-radius: 100%;
+  top: 5px;
+  left: 5px;
+  transition: -webkit-transform 0.25s ease;
+  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+}
